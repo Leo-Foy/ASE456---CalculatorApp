@@ -30,6 +30,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String userQuestion = '';
   String userAnswer = '';
+  String lastAnswer ='';
+  String lastButtonPressed = '';
 
   final List buttons = [
     'C', // buttons[0]
@@ -67,25 +69,43 @@ class _HomePageState extends State<HomePage> {
       else {
         userAnswer = eval.toString();
       }
+      lastAnswer = userAnswer;
     });
   }
 
   void pressedButton(String button) {
     if (button == 'C') {
+      lastButtonPressed = 'C';
       setState(() {
         userQuestion = '';
         userAnswer = '';
       });
     } else if (button == 'DEL') {
+      lastButtonPressed = 'DEL';
       setState(() {
         userQuestion = userQuestion.substring(0, userQuestion.length - 1);
       });
     } else if (button == '=') {
+      lastButtonPressed = '=';
       calculateExpression();
+    } else if (button == 'ANS'){
+      if (lastButtonPressed == '='){
+        userQuestion = '';
+        userAnswer = '';
+      }
+      setState(() {
+        userQuestion += lastAnswer;
+        lastButtonPressed = 'ANS';
+      });
     } else {
       if (userQuestion.length < 16) {
+        if (lastButtonPressed == '='){
+          userQuestion = '';
+          userAnswer = '';
+        }
         setState(() {
           userQuestion += button;
+          lastButtonPressed = button;
         });
       }
     }
