@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
 
     setState(() {
       if (eval.toString().length > 16){
-        userAnswer = eval.toStringAsPrecision(16);
+        userAnswer = eval.toString().substring(0,16);
       }
       else {
         userAnswer = eval.toString();
