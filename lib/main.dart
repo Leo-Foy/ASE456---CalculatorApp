@@ -83,9 +83,11 @@ class _HomePageState extends State<HomePage> {
     } else if (button == '=') {
       calculateExpression();
     } else {
-      setState(() {
-        userQuestion += button;
-      });
+      if (userQuestion.length < 16) {
+        setState(() {
+          userQuestion += button;
+        });
+      }
     }
   }
 
