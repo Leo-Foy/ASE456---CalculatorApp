@@ -61,7 +61,11 @@ class _HomePageState extends State<HomePage> {
     double eval = expression.evaluate(EvaluationType.REAL, cm);
 
     setState(() {
-      userAnswer = eval.toString();
+      if (eval.isInfinite) {
+        userAnswer = 'Cannot divide by zero';
+      } else {
+        userAnswer = eval.toString();
+      }
     });
   }
 
