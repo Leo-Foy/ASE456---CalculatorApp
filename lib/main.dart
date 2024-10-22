@@ -76,6 +76,13 @@ class _HomePageState extends State<HomePage> {
         userAnswer = eval.toString();
       }
       lastAnswer = userAnswer;
+
+      if (eval.isInfinite) {
+        userAnswer = 'Cannot divide by zero';
+      } else {
+        userAnswer = eval.toString();
+      }
+
     });
   }
 
@@ -116,6 +123,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  TextStyle displayStyle = TextStyle(
+    color: Colors.deepPurple[900],
+    fontWeight: FontWeight.bold,
+    fontSize: 48,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,6 +138,7 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Container(
             padding: EdgeInsets.only(left: 25, right: 25, top: 75),
+            height: 200,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -132,11 +146,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         userQuestion,
-                        style: TextStyle(
-                          color: Colors.deepPurple[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 48,
-                        ),
+                        style: displayStyle,
                       ),
                     ],
                   ),
@@ -145,16 +155,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         userAnswer,
-                        style: TextStyle(
-                          color: Colors.deepPurple[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 48,
-                        ),
+                        style: displayStyle,
                       ),
                     ],
                   )
                 ]),
-            height: 200,
           ),
         ),
 
