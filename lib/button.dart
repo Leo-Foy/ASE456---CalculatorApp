@@ -36,3 +36,10 @@ class MyButton extends StatelessWidget {
     );
   }
 }
+
+class Button{
+  final String label;
+  final void Function() onPressed;
+
+  Button({required this.label, required this.onPressed});
+}
