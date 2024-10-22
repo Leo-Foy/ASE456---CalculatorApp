@@ -30,29 +30,37 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String userQuestion = '';
   String userAnswer = '';
+  String lastAnswer ='0';
+  String lastButtonPressed = '';
+  late List<Button> buttons;
 
-  final List buttons = [
-    'C', // buttons[0]
-    'DEL', // buttons[1]
-    '%', // buttons[2]
-    '/', // buttons[3]
-    '9', // buttons[4]
-    '8', // buttons[5]
-    '7', // buttons[6]
-    '*', // buttons[7]
-    '6', // buttons[8]
-    '5', // buttons[9]
-    '4', // buttons[10]
-    '-', // buttons[11]
-    '3', // buttons[12]
-    '2', // buttons[13]
-    '1', // buttons[14]
-    '+', // buttons[15]
-    '0', // buttons[16]
-    '.', // buttons[17]
-    'ANS', // buttons[18]
-    '=', // buttons[19]
-  ];
+  @override
+  void initState() {
+    super.initState();
+    buttons = [
+      Button(label:'C', onPressed: () => setState(() {clear(); lastButtonPressed='C';})),
+      Button(label:'DEL', onPressed: () => setState(() {delete();})),
+      Button(label:'%', onPressed: () => addToUserQuestion('%')),
+      Button(label:'/', onPressed: () => addToUserQuestion('/')),
+      Button(label:'7', onPressed: () => addToUserQuestion('7')),
+      Button(label:'8', onPressed: () => addToUserQuestion('8')),
+      Button(label:'9', onPressed: () => addToUserQuestion('9')),
+      Button(label:'*', onPressed: () => addToUserQuestion('*')),
+      Button(label:'4', onPressed: () => addToUserQuestion('4')),
+      Button(label:'5', onPressed: () => addToUserQuestion('5')),
+      Button(label:'6', onPressed: () => addToUserQuestion('6')),
+      Button(label:'-', onPressed: () => addToUserQuestion('-')),
+      Button(label:'1', onPressed: () => addToUserQuestion('1')),
+      Button(label:'2', onPressed: () => addToUserQuestion('2')),
+      Button(label:'3', onPressed: () => addToUserQuestion('3')),
+      Button(label:'+', onPressed: () => addToUserQuestion('+')),
+      Button(label:'0', onPressed: () => addToUserQuestion('0')),
+      Button(label:'.', onPressed: () => addToUserQuestion('.')),
+      Button(label:'ANS', onPressed: () => ans()),
+      Button(label:'=', onPressed: () => equals()),
+    ];
+
+  }
 
   void calculateExpression() {
     Parser p = Parser();
@@ -61,28 +69,65 @@ class _HomePageState extends State<HomePage> {
     double eval = expression.evaluate(EvaluationType.REAL, cm);
 
     setState(() {
-      userAnswer = eval.toString();
+      if (eval.toString().length > 16){
+        userAnswer = eval.toString().substring(0,16);
+      }
+      else {
+        userAnswer = eval.toString();
+      }
+      lastAnswer = userAnswer;
+
+      if (eval.isInfinite) {
+        userAnswer = 'Cannot divide by zero';
+      } else {
+        userAnswer = eval.toString();
+      }
+
     });
   }
 
-  void pressedButton(String button) {
-    if (button == 'C') {
-      setState(() {
-        userQuestion = '';
-        userAnswer = '';
-      });
-    } else if (button == 'DEL') {
-      setState(() {
-        userQuestion = userQuestion.substring(0, userQuestion.length - 1);
-      });
-    } else if (button == '=') {
-      calculateExpression();
-    } else {
-      setState(() {
-        userQuestion += button;
-      });
+  void clear(){
+    userQuestion ='';
+    userAnswer = '';
+  }
+
+  void delete(){
+    if (userQuestion.isNotEmpty) {
+      userQuestion = userQuestion.substring(0, userQuestion.length - 1);
+      lastButtonPressed = 'DEL';
     }
   }
+
+  void ans() {
+    if (userQuestion.length + lastAnswer.length < 16) {
+      if (lastButtonPressed == '=') {
+        clear();
+      }
+      userQuestion += lastAnswer;
+      lastButtonPressed = 'ANS';
+    }
+  }
+
+  void equals(){
+    lastButtonPressed = '=';
+    calculateExpression();
+  }
+
+  void addToUserQuestion(String input){
+    if (userQuestion.length < 16) {
+      if (lastButtonPressed == '='){
+        clear();
+      }
+      userQuestion += input;
+      lastButtonPressed = input;
+    }
+  }
+
+  TextStyle displayStyle = TextStyle(
+    color: Colors.deepPurple[900],
+    fontWeight: FontWeight.bold,
+    fontSize: 48,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +138,7 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Container(
             padding: EdgeInsets.only(left: 25, right: 25, top: 75),
+            height: 200,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -100,11 +146,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         userQuestion,
-                        style: TextStyle(
-                          color: Colors.deepPurple[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 48,
-                        ),
+                        style: displayStyle,
                       ),
                     ],
                   ),
@@ -113,16 +155,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         userAnswer,
-                        style: TextStyle(
-                          color: Colors.deepPurple[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 48,
-                        ),
+                        style: displayStyle,
                       ),
                     ],
                   )
                 ]),
-            height: 200,
           ),
         ),
 
@@ -138,11 +175,13 @@ class _HomePageState extends State<HomePage> {
                       crossAxisCount: 4),
                   itemBuilder: (context, index) {
                     return MyButton(
-                      child: buttons[index],
+                      child: buttons[index].label,
                       buttonColor: Colors.deepPurple[100],
                       textColor: Colors.black,
                       function: () {
-                        pressedButton(buttons[index]);
+                        setState(() {
+                          buttons[index].onPressed();
+                        });
                       },
                     );
                   })),
