@@ -58,6 +58,9 @@ class _HomePageState extends State<HomePage> {
       Button(label:'.', onPressed: () => addToUserQuestion('.')),
       Button(label:'ANS', onPressed: () => ans()),
       Button(label:'=', onPressed: () => equals()),
+      Button(label:'cos', onPressed: () => addToUserQuestion('cos')),
+      Button(label:'(', onPressed: () => addToUserQuestion('(')),
+      Button(label:')', onPressed: () => addToUserQuestion(')')),
     ];
 
   }
@@ -170,7 +173,6 @@ class _HomePageState extends State<HomePage> {
               height: 200,
               child: GridView.builder(
                   itemCount: buttons.length,
-                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemBuilder: (context, index) {
