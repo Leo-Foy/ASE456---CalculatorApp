@@ -1,0 +1,36 @@
+
+.dart_tool/package_config.json
+.dart_tool/package_config_subset
+.dart_tool/version
+.idea/ASE456---CalculatorApp.iml
+.idea/caches/deviceStreaming.xml
+.idea/libraries/Dart_SDK.xml
+.idea/libraries/Flutter_Plugins.xml
+.idea/modules.xml
+.idea/vcs.xml
+build/ca23e6e8677c58dda6531b880b691b23/_composite.stamp
+build/ca23e6e8677c58dda6531b880b691b23/gen_dart_plugin_registrant.stamp
+build/ca23e6e8677c58dda6531b880b691b23/gen_localizations.stamp
+build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill
+build/flutter_assets/AssetManifest.bin
+build/flutter_assets/AssetManifest.bin.json
+build/flutter_assets/AssetManifest.json
+build/flutter_assets/FontManifest.json
+build/flutter_assets/fonts/MaterialIcons-Regular.otf
+build/flutter_assets/NOTICES
+build/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+build/flutter_assets/shaders/ink_sparkle.frag
+build/last_build_run.json
+pubspec.lock
+.idea/misc.xml
+.idea/libraries/Dart_Packages.xml
+.dart_tool/chrome-device/Default/BudgetDatabase/LOG
+.dart_tool/chrome-device/Default/BudgetDatabase/LOCK
+.dart_tool/chrome-device/Default/BrowsingTopicsState
+.dart_tool/chrome-device/Default/BrowsingTopicsSiteData-journal
+.dart_tool/chrome-device/Default/BrowsingTopicsSiteData
+.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOG.old
+.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOG
+.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOCK
+.dart_tool/chrome-device/Default/Affiliation Database-journal
+.dart_tool/chrome-device/Default/Affiliation Database
