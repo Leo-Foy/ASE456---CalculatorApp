@@ -2,6 +2,7 @@ import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/main.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'dart:math' as math;
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +43,6 @@ class _HomePageState extends State<HomePage> {
       Button(label:'DEL', onPressed: () => setState(() {delete();})),
       Button(label:'%', onPressed: () => addToUserQuestion('%')),
       Button(label:'/', onPressed: () => addToUserQuestion('/')),
-      Button(label:'log', onPressed: () => addToUserQuestion('log')),
       Button(label:'7', onPressed: () => addToUserQuestion('7')),
       Button(label:'8', onPressed: () => addToUserQuestion('8')),
       Button(label:'9', onPressed: () => addToUserQuestion('9')),
@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'.', onPressed: () => addToUserQuestion('.')),
       Button(label:'ANS', onPressed: () => ans()),
       Button(label:'=', onPressed: () => equals()),
+      Button(label:'log2 n', onPressed: () => binarylogButton('log2')),
     ];
 
   }
@@ -120,6 +121,36 @@ class _HomePageState extends State<HomePage> {
       lastButtonPressed = input;
     }
   }
+
+
+  void binarylogButton(String unit) {
+    try {
+      int numberInput = int.parse(userQuestion);
+
+      // Calculate binary logarithm
+      double? result;
+      if (numberInput > 0) {
+        result = math.log(numberInput) / math.log(2);
+      }
+
+      setState(() {
+        if (result == null) {
+          userAnswer = "Error";
+        } else if (result.toString().length > 16) {
+          userAnswer = result.toStringAsFixed(10);
+        } else {
+          userAnswer = result.toString();
+        }
+      });
+    } catch (e) {
+      setState(() {
+        userAnswer = "Error";
+      });
+    }
+  }
+
+
+
 
   TextStyle displayStyle = TextStyle(
     color: Colors.deepPurple[900],
