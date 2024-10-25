@@ -1,5 +1,5 @@
 # ASE456---CalculatorApp
-nstallation
+Installation
 To run this project, you'll need to have Flutter and Dart installed. If you haven't installed Flutter yet, follow this guide to set up your environment.
 
 Prerequisites
