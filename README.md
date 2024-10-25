@@ -7,22 +7,26 @@ Flutter SDK: Install Flutter
 Dart SDK: Dart comes with Flutter installation.
 IDE: Recommended Android Studio or VS Code.
 Cloning the Repository
-bash
+
 Copy code
-git clone https://github.com/your-username/scientific_calculator.git
+git clone git@github.com:Leo-Foy/ASE456---CalculatorApp.git
+
 Installing Dependencies
 Navigate to the project directory and run:
 
-bash
-Copy code
-cd scientific_calculator
+bash:
+cd ASE456---CalculatorApp
+
+Update packages and dependencies
+bash:
 flutter pub get
+
 Running the Project
 Connect your device or start an emulator.
 
 Execute the following command in your terminal:
 
-bash
-Copy code
+bash:
 flutter run
+
 Alternatively, you can use your preferred IDE to run the project.
