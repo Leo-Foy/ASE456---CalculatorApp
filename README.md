@@ -38,3 +38,10 @@ git clone git@github.com:Leo-Foy/ASE456---CalculatorApp.git
 flutter pub get
 ```
 
+###Running the Project
+Connect your device or start an emulator.
+
+```bash
+flutter run
+```
+
