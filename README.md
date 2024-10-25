@@ -39,7 +39,8 @@ flutter pub get
 ```
 
 ###Running the Project
-Connect your device or start an emulator.
+
+-Connect your device or start an emulator.
 
 ```bash
 flutter run
