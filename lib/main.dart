@@ -58,6 +58,9 @@ class _HomePageState extends State<HomePage> {
       Button(label:'.', onPressed: () => addToUserQuestion('.')),
       Button(label:'ANS', onPressed: () => ans()),
       Button(label:'=', onPressed: () => equals()),
+      Button(label: 'ln', onPressed: () => addToUserQuestion('ln')),
+      Button(label: '(', onPressed: () => addToUserQuestion('(')),
+      Button(label: ')', onPressed: () => addToUserQuestion(')')),
     ];
 
   }
