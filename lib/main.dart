@@ -66,16 +66,24 @@ class _HomePageState extends State<HomePage> {
   }
 
   void calculateExpression() {
-    Parser p = Parser();
-    Expression expression = p.parse(userQuestion);
-    ContextModel cm = ContextModel();
-    double eval = expression.evaluate(EvaluationType.REAL, cm);
+    double? eval;
+    try {
+      Parser p = Parser();
+      Expression expression = p.parse(userQuestion);
+      ContextModel cm = ContextModel();
+      eval = expression.evaluate(EvaluationType.REAL, cm);
+    } catch (e) {
+      eval = null;
+    }
 
     setState(() {
-      if (eval.isInfinite) {
-        userAnswer = 'Cannot divide by zero';
-      }
-      else if (eval.toString().length > 16){
+      if (eval == null){
+        userAnswer = 'Invalid Expression';
+      } else if (eval.isInfinite) {
+        userAnswer = 'Undefined';
+      } else if (eval.isNaN) {
+        userAnswer = 'Not a Number';
+      } else if (eval.toString().length > 16){
         userAnswer = eval.toString().substring(0,16);
         lastAnswer = userAnswer;
       }
@@ -170,7 +178,6 @@ class _HomePageState extends State<HomePage> {
               height: 200,
               child: GridView.builder(
                   itemCount: buttons.length,
-                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemBuilder: (context, index) {
