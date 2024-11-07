@@ -1,6 +1,7 @@
 import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/main.dart';
+import 'dart:math';
 import 'package:math_expressions/math_expressions.dart';
 
 void main() {
@@ -42,6 +43,8 @@ class _HomePageState extends State<HomePage> {
       Button(label:'DEL', onPressed: () => setState(() {delete();})),
       Button(label:'%', onPressed: () => addToUserQuestion('%')),
       Button(label:'/', onPressed: () => addToUserQuestion('/')),
+      Button(label: 'sin', onPressed: () => addToUserQuestion('sin(')),
+      Button(label: 'x²', onPressed: () => addToUserQuestion('^2')),
       Button(label:'7', onPressed: () => addToUserQuestion('7')),
       Button(label:'8', onPressed: () => addToUserQuestion('8')),
       Button(label:'9', onPressed: () => addToUserQuestion('9')),
@@ -63,6 +66,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   void calculateExpression() {
+    String expressionStr = userQuestion;
+    
+    expressionStr = expressionStr.replaceAllMapped(RegExp(r'sin\(([^)]+)\)'), (match) {
+      double degrees = double.tryParse(match.group(1) ?? '0') ?? 0;
+      return sin(degrees * (pi / 180)).toString();
+    });
+
+    expressionStr = expressionStr.replaceAllMapped(RegExp(r'(\d+)\^2'), (match) {
+      double base = double.tryParse(match.group(1) ?? '0') ?? 0;
+      return pow(base, 2).toString();
+    });
+    
     Parser p = Parser();
     Expression expression = p.parse(userQuestion);
     ContextModel cm = ContextModel();
