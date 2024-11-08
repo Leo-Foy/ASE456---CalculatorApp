@@ -1,6 +1,5 @@
 import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
-import 'package:calculator/main.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 void main() {
@@ -58,6 +57,9 @@ class _HomePageState extends State<HomePage> {
       Button(label:'.', onPressed: () => addToUserQuestion('.')),
       Button(label:'ANS', onPressed: () => ans()),
       Button(label:'=', onPressed: () => equals()),
+      Button(label:'cos', onPressed: () => addToUserQuestion('cos')),
+      Button(label:'(', onPressed: () => addToUserQuestion('(')),
+      Button(label:')', onPressed: () => addToUserQuestion(')')),
     ];
 
   }
@@ -133,9 +135,6 @@ class _HomePageState extends State<HomePage> {
       body: Column(children: [
         // Q and A
         Expanded(
-          child: Container(
-            padding: EdgeInsets.only(left: 25, right: 25, top: 75),
-            height: 200,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -157,19 +156,20 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )
                 ]),
-          ),
         ),
 
         // buttons
         Expanded(
           flex: 2,
           child: Container(
-              height: 200,
-              child: GridView.builder(
+            child: LayoutBuilder(
+            builder: (context, constraints) {
+              int crossAxisCount = (constraints.maxWidth / 90).floor();
+              return GridView.builder(
                   itemCount: buttons.length,
-                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4),
+                    crossAxisCount: crossAxisCount,
+                    childAspectRatio: 1),
                   itemBuilder: (context, index) {
                     return MyButton(
                       child: buttons[index].label,
@@ -181,7 +181,10 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                     );
-                  })),
+                  }
+              );
+            }),
+          ),
         ),
       ]),
     );
