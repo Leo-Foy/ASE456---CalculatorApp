@@ -60,6 +60,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'cos', onPressed: () => addToUserQuestion('cos')),
       Button(label:'(', onPressed: () => addToUserQuestion('(')),
       Button(label:')', onPressed: () => addToUserQuestion(')')),
+      Button(label:'X^y', onPressed: () => addToUserQuestion('^')),
     ];
 
   }
