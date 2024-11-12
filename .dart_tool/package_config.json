@@ -176,10 +176,10 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-10-30T17:13:28.129838Z",
+  "generated": "2024-11-12T20:21:57.066316Z",
   "generator": "pub",
-  "generatorVersion": "3.5.1",
+  "generatorVersion": "3.5.4",
   "flutterRoot": "file:///C:/Users/allig/dev/flutter",
-  "flutterVersion": "3.24.1",
+  "flutterVersion": "3.24.4",
   "pubCache": "file:///C:/Users/allig/AppData/Local/Pub/Cache"
 }
