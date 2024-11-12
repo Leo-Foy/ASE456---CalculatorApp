@@ -42,8 +42,6 @@ class _HomePageState extends State<HomePage> {
       Button(label:'DEL', onPressed: () => setState(() {delete();})),
       Button(label:'%', onPressed: () => addToUserQuestion('%')),
       Button(label:'/', onPressed: () => addToUserQuestion('/')),
-      Button(label: 'sin', onPressed: () => addToUserQuestion('sin(')),
-      Button(label: 'x²', onPressed: () => addToUserQuestion('^2')),
       Button(label:'7', onPressed: () => addToUserQuestion('7')),
       Button(label:'8', onPressed: () => addToUserQuestion('8')),
       Button(label:'9', onPressed: () => addToUserQuestion('9')),
@@ -60,6 +58,9 @@ class _HomePageState extends State<HomePage> {
       Button(label:'.', onPressed: () => addToUserQuestion('.')),
       Button(label:'ANS', onPressed: () => ans()),
       Button(label:'=', onPressed: () => equals()),
+      Button(label:'cos', onPressed: () => addToUserQuestion('cos')),
+      Button(label:'(', onPressed: () => addToUserQuestion('(')),
+      Button(label:')', onPressed: () => addToUserQuestion(')')),
     ];
 
   }
