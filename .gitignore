@@ -1,1 +1,10 @@
 .dart_tool/
+.idea/
+build/
+android/local.properties
+ios/Flutter/Generated.xcconfig
+windows/flutter/ephemeral/
+windows/flutter/ephemeral/flutter_windows.dll.pdb
+linux/flutter/ephemeral/
+macos/flutter/ephemeral/
+web/
