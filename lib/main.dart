@@ -1,6 +1,7 @@
 import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -61,6 +62,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'(', onPressed: () => addToUserQuestion('(')),
       Button(label:')', onPressed: () => addToUserQuestion(')')),
       Button(label:'X^y', onPressed: () => addToUserQuestion('^')),
+      Button(label:'Tan', onPressed: () => tanButton('Rad')), //23
     ];
 
   }
@@ -72,17 +74,20 @@ class _HomePageState extends State<HomePage> {
     double eval = expression.evaluate(EvaluationType.REAL, cm);
 
     setState(() {
-      if (eval.isInfinite) {
-        userAnswer = 'Cannot divide by zero';
-      }
-      else if (eval.toString().length > 16){
+      if (eval.toString().length > 16){
         userAnswer = eval.toString().substring(0,16);
-        lastAnswer = userAnswer;
       }
       else {
         userAnswer = eval.toString();
-        lastAnswer = userAnswer;
       }
+      lastAnswer = userAnswer;
+
+      if (eval.isInfinite) {
+        userAnswer = 'Cannot divide by zero';
+      } else {
+        userAnswer = eval.toString();
+      }
+
     });
   }
 
@@ -121,6 +126,22 @@ class _HomePageState extends State<HomePage> {
       userQuestion += input;
       lastButtonPressed = input;
     }
+  }
+
+  void tanButton(String unit){
+    //only calculates radians at the moment
+    double numberInput= double.parse(userQuestion);
+    double result = tan(numberInput);
+
+    setState(() {
+      if (result.toString().length > 16){
+        userAnswer = result.toString().substring(0,16);
+      }
+      else {
+        userAnswer = result.toString();
+      }
+
+    });
   }
 
   TextStyle displayStyle = TextStyle(

@@ -1,0 +1,74 @@
+
+.dart_tool/package_config.json
+.dart_tool/package_config_subset
+.dart_tool/version
+.idea/ASE456---CalculatorApp.iml
+.idea/caches/deviceStreaming.xml
+.idea/libraries/Dart_SDK.xml
+.idea/libraries/Flutter_Plugins.xml
+.idea/modules.xml
+.idea/vcs.xml
+build/ca23e6e8677c58dda6531b880b691b23/_composite.stamp
+build/ca23e6e8677c58dda6531b880b691b23/gen_dart_plugin_registrant.stamp
+build/ca23e6e8677c58dda6531b880b691b23/gen_localizations.stamp
+build/f872507f30e2ff2523f0f1d19160266e.cache.dill.track.dill
+build/flutter_assets/AssetManifest.bin
+build/flutter_assets/AssetManifest.bin.json
+build/flutter_assets/AssetManifest.json
+build/flutter_assets/FontManifest.json
+build/flutter_assets/fonts/MaterialIcons-Regular.otf
+build/flutter_assets/NOTICES
+build/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+build/flutter_assets/shaders/ink_sparkle.frag
+build/last_build_run.json
+pubspec.lock
+.idea/misc.xml
+.idea/libraries/Dart_Packages.xml
+.dart_tool/chrome-device/Default/BudgetDatabase/LOG
+.dart_tool/chrome-device/Default/BudgetDatabase/LOCK
+.dart_tool/chrome-device/Default/BrowsingTopicsState
+.dart_tool/chrome-device/Default/BrowsingTopicsSiteData-journal
+.dart_tool/chrome-device/Default/BrowsingTopicsSiteData
+.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOG.old
+.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOG
+.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOCK
+.dart_tool/chrome-device/Default/Affiliation Database-journal
+.dart_tool/chrome-device/Default/Affiliation Database
+pubspec.yaml
+.dart_tool/chrome-device/Default/BudgetDatabase/LOG.old
+.dart_tool/chrome-device/Default/ClientCertificates/LOCK
+.dart_tool/chrome-device/Default/ClientCertificates/LOG
+.dart_tool/chrome-device/Default/ClientCertificates/LOG.old
+.dart_tool/chrome-device/Default/commerce_subscription_db/LOCK
+.dart_tool/chrome-device/Default/commerce_subscription_db/LOG
+.dart_tool/chrome-device/Default/commerce_subscription_db/LOG.old
+.dart_tool/chrome-device/Default/DIPS
+.dart_tool/chrome-device/Default/DIPS-journal
+.dart_tool/chrome-device/Default/discounts_db/LOCK
+.dart_tool/chrome-device/Default/discounts_db/LOG
+.dart_tool/chrome-device/Default/discounts_db/LOG.old
+.dart_tool/chrome-device/Default/Download Service/EntryDB/LOCK
+.dart_tool/chrome-device/Default/Download Service/EntryDB/LOG
+.dart_tool/chrome-device/Default/Extension Rules/000003.log
+.dart_tool/chrome-device/Default/Extension Rules/LOCK
+.dart_tool/chrome-device/Default/Extension Rules/CURRENT
+.dart_tool/chrome-device/Default/Extension Rules/LOG
+.dart_tool/chrome-device/Default/Extension Rules/MANIFEST-000001
+.dart_tool/chrome-device/Default/Extension Scripts/000003.log
+.dart_tool/chrome-device/Default/Extension Scripts/CURRENT
+.dart_tool/chrome-device/Default/Extension Scripts/LOCK
+.dart_tool/chrome-device/Default/Extension Scripts/LOG
+.dart_tool/chrome-device/Default/Extension Scripts/MANIFEST-000001
+.dart_tool/pub/bin/test/test.dart-3.5.1.snapshot
+.dart_tool/test/incremental_kernel.Ly9AZGFydD0yLjE3
+build/native_assets/windows/native_assets.yaml
+build/test_cache/build/cache.dill.track.dill
+build/unit_test_assets/AssetManifest.bin
+build/unit_test_assets/AssetManifest.json
+build/unit_test_assets/FontManifest.json
+build/unit_test_assets/fonts/MaterialIcons-Regular.otf
+build/unit_test_assets/NOTICES.Z
+build/unit_test_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+build/unit_test_assets/shaders/ink_sparkle.frag
+pubspec.yaml
+test/.dart_tool/test/incremental_kernel.Ly9AZGFydD0yLjE3
