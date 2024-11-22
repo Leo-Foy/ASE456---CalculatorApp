@@ -1,7 +1,7 @@
 import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
 import 'dart:math';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,26 +68,34 @@ class _HomePageState extends State<HomePage> {
   }
 
   void calculateExpression() {
+    String expressionStr = userQuestion;
+    expressionStr = expressionStr.replaceAllMapped(RegExp(r'sin\(([^)]+)\)'), (match) {
+      double degrees = double.tryParse(match.group(1) ?? '0') ?? 0;
+      return sin(degrees * (pi / 180)).toString();
+    });
+
+    expressionStr = expressionStr.replaceAllMapped(RegExp(r'(\d+)\^2'), (match) {
+      double base = double.tryParse(match.group(1) ?? '0') ?? 0;
+      return pow(base, 2).toString();
+    });
+
     Parser p = Parser();
     Expression expression = p.parse(userQuestion);
     ContextModel cm = ContextModel();
     double eval = expression.evaluate(EvaluationType.REAL, cm);
 
     setState(() {
-      if (eval.toString().length > 16){
+      if (eval.isInfinite) {
+        userAnswer = 'Cannot divide by zero';
+      }
+      else if (eval.toString().length > 16){
         userAnswer = eval.toString().substring(0,16);
+        lastAnswer = userAnswer;
       }
       else {
         userAnswer = eval.toString();
+        lastAnswer = userAnswer;
       }
-      lastAnswer = userAnswer;
-
-      if (eval.isInfinite) {
-        userAnswer = 'Cannot divide by zero';
-      } else {
-        userAnswer = eval.toString();
-      }
-
     });
   }
 
@@ -128,22 +136,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void tanButton(String unit){
-    //only calculates radians at the moment
-    double numberInput= double.parse(userQuestion);
-    double result = tan(numberInput);
-
-    setState(() {
-      if (result.toString().length > 16){
-        userAnswer = result.toString().substring(0,16);
-      }
-      else {
-        userAnswer = result.toString();
-      }
-
-    });
-  }
-
   TextStyle displayStyle = TextStyle(
     color: Colors.deepPurple[900],
     fontWeight: FontWeight.bold,
@@ -157,6 +149,9 @@ class _HomePageState extends State<HomePage> {
       body: Column(children: [
         // Q and A
         Expanded(
+          child: Container(
+            padding: EdgeInsets.only(left: 25, right: 25, top: 75),
+            height: 200,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -178,20 +173,19 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )
                 ]),
+          ),
         ),
 
         // buttons
         Expanded(
           flex: 2,
           child: Container(
-            child: LayoutBuilder(
-            builder: (context, constraints) {
-              int crossAxisCount = (constraints.maxWidth / 90).floor();
-              return GridView.builder(
+              height: 200,
+              child: GridView.builder(
                   itemCount: buttons.length,
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    childAspectRatio: 1),
+                      crossAxisCount: 4),
                   itemBuilder: (context, index) {
                     return MyButton(
                       child: buttons[index].label,
@@ -203,10 +197,7 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                     );
-                  }
-              );
-            }),
-          ),
+                  })),
         ),
       ]),
     );
