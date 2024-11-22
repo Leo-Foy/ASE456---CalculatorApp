@@ -38,31 +38,31 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     buttons = [
-      Button(label:'C', onPressed: () => setState(() {clear(); lastButtonPressed='C';})), //0
-      Button(label:'DEL', onPressed: () => setState(() {delete();})), //1
-      Button(label:'%', onPressed: () => addToUserQuestion('%')), //2
-      Button(label:'/', onPressed: () => addToUserQuestion('/')), //3
-      Button(label:'7', onPressed: () => addToUserQuestion('7')), //4
-      Button(label:'8', onPressed: () => addToUserQuestion('8')), //5
-      Button(label:'9', onPressed: () => addToUserQuestion('9')), //6
-      Button(label:'*', onPressed: () => addToUserQuestion('*')), //7
-      Button(label:'4', onPressed: () => addToUserQuestion('4')), //8
-      Button(label:'5', onPressed: () => addToUserQuestion('5')), //9
-      Button(label:'6', onPressed: () => addToUserQuestion('6')), //10
-      Button(label:'-', onPressed: () => addToUserQuestion('-')), //11
-      Button(label:'1', onPressed: () => addToUserQuestion('1')), //12
-      Button(label:'2', onPressed: () => addToUserQuestion('2')), //13
-      Button(label:'3', onPressed: () => addToUserQuestion('3')), //14
-      Button(label:'+', onPressed: () => addToUserQuestion('+')), //15
-      Button(label:'0', onPressed: () => addToUserQuestion('0')), //16
-      Button(label:'.', onPressed: () => addToUserQuestion('.')), //17
-      Button(label:'ANS', onPressed: () => ans()), //18
-      Button(label:'=', onPressed: () => equals()), //19
-      Button(label: 'sin', onPressed: () => addToUserQuestion('sin(')), //20
-      Button(label: 'x²', onPressed: () => addToUserQuestion('^2')), //21
-      Button(label:'cos', onPressed: () => addToUserQuestion('cos')), //22
-      Button(label:'(', onPressed: () => addToUserQuestion('(')), //23
-      Button(label:')', onPressed: () => addToUserQuestion(')')), //24
+      Button(label:'C', onPressed: () => setState(() {clear(); lastButtonPressed='C';})),
+      Button(label:'DEL', onPressed: () => setState(() {delete();})),
+      Button(label:'%', onPressed: () => addToUserQuestion('%')),
+      Button(label:'/', onPressed: () => addToUserQuestion('/')),
+      Button(label:'7', onPressed: () => addToUserQuestion('7')),
+      Button(label:'8', onPressed: () => addToUserQuestion('8')),
+      Button(label:'9', onPressed: () => addToUserQuestion('9')),
+      Button(label:'*', onPressed: () => addToUserQuestion('*')),
+      Button(label:'4', onPressed: () => addToUserQuestion('4')),
+      Button(label:'5', onPressed: () => addToUserQuestion('5')),
+      Button(label:'6', onPressed: () => addToUserQuestion('6')),
+      Button(label:'-', onPressed: () => addToUserQuestion('-')),
+      Button(label:'1', onPressed: () => addToUserQuestion('1')),
+      Button(label:'2', onPressed: () => addToUserQuestion('2')),
+      Button(label:'3', onPressed: () => addToUserQuestion('3')),
+      Button(label:'+', onPressed: () => addToUserQuestion('+')),
+      Button(label:'0', onPressed: () => addToUserQuestion('0')),
+      Button(label:'.', onPressed: () => addToUserQuestion('.')),
+      Button(label:'ANS', onPressed: () => ans()),
+      Button(label:'=', onPressed: () => equals()),
+      Button(label:'cos', onPressed: () => addToUserQuestion('cos')),
+      Button(label:'(', onPressed: () => addToUserQuestion('(')),
+      Button(label:')', onPressed: () => addToUserQuestion(')')),
+      Button(label:'X^y', onPressed: () => addToUserQuestion('^')),
+      Button(label:'Tan', onPressed: () => tanButton('Rad')), //23
     ];
 
   }
