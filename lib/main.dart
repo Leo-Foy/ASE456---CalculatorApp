@@ -62,6 +62,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'(', onPressed: () => addToUserQuestion('(')), //21
       Button(label:')', onPressed: () => addToUserQuestion(')')), //22
       Button(label:'Tan', onPressed: () => tanButton('Rad')), //23
+      Button(label: 'x³', onPressed: () => setState(() { cube(); })), //24
     ];
 
   }
@@ -88,6 +89,25 @@ class _HomePageState extends State<HomePage> {
       }
 
     });
+  }
+
+  void cube() {
+    try {
+      // Parse the user input and calculate the cube
+      double value = double.parse(userQuestion);
+      double result = pow(value, 3).toDouble();
+
+      setState(() {
+        userAnswer = result.toString();
+        lastAnswer = userAnswer;
+        lastButtonPressed = 'x³';
+      });
+    } catch (e) {
+      // Handle invalid input
+      setState(() {
+        userAnswer = 'Error';
+      });
+    }
   }
 
   void clear(){
