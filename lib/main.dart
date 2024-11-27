@@ -1,6 +1,6 @@
 import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
-import 'package:calculator/main.dart';
+
 import 'package:math_expressions/math_expressions.dart';
 import 'dart:math' as math;
 
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'.', onPressed: () => addToUserQuestion('.')),
       Button(label:'ANS', onPressed: () => ans()),
       Button(label:'=', onPressed: () => equals()),
-      Button(label:'log2 n', onPressed: () => binarylogButton('log2')),
+      Button(label:'log2 n', onPressed: () => binaryLogButton('log2')),
     ];
 
   }
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-  void binarylogButton(String unit) {
+  void binaryLogButton(String unit) {
     try {
       int numberInput = int.parse(userQuestion);
 
