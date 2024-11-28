@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
 
@@ -115,23 +117,22 @@ class _HomePageState extends State<HomePage> {
   }
 
 
+  double sinh(double x) {
+    return (exp(x) - exp(-x)) / 2;
+  }
+
   void sinhButton() {
     try {
       double numberInput = double.parse(userQuestion);
 
-      // Calculate hyperbolic sine
-      double result = math.sinh(numberInput);
+      double result = sinh(numberInput);
 
       setState(() {
-        if (result.toString().length > 16) {
-          userAnswer = result.toStringAsFixed(10);
-        } else {
-          userAnswer = result.toString();
-        }
+        userAnswer = result.toStringAsFixed(10); // Display up to 10 decimals
       });
     } catch (e) {
       setState(() {
-        userAnswer = "Error";
+        userAnswer = "Error"; // Error for invalid input
       });
     }
   }
