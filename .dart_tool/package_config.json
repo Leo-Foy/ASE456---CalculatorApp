@@ -176,10 +176,10 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-10-25T00:53:54.291628Z",
+  "generated": "2024-11-28T02:56:53.824569Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///opt/homebrew/Caskroom/flutter/3.24.1/flutter",
-  "flutterVersion": "3.24.4",
+  "flutterVersion": "3.24.5",
   "pubCache": "file:///Users/sarahriley/.pub-cache"
 }
