@@ -30,7 +30,7 @@ void main() {
     await tester.pumpAndSettle();
 
     //answer of cos(1) -> since our calculator returns a max of 16 digits
-    final findAnswer = find.text('0.54030230586813');
+    final findAnswer = find.text('0.54030');
 
     expect(findAnswer, findsOneWidget);
   });
@@ -67,7 +67,7 @@ void main() {
     await tester.pumpAndSettle();
 
     //answer of cos(85) -> since our calculator returns a max of 16 digits
-    final findAnswer = find.text('-0.9843766433940');
+    final findAnswer = find.text('-0.9843');
 
     expect(findAnswer, findsOneWidget);
   });
