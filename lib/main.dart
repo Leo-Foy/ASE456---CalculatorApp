@@ -62,7 +62,9 @@ class _HomePageState extends State<HomePage> {
       Button(label:'(', onPressed: () => addToUserQuestion('(')),
       Button(label:')', onPressed: () => addToUserQuestion(')')),
       Button(label:'X^y', onPressed: () => addToUserQuestion('^')),
-      Button(label:'Tan', onPressed: () => tanButton('Rad')), //23
+      Button(label:'Tan', onPressed: () => tanButton('Rad')),
+      Button(label: 'sin', onPressed: () => addToUserQuestion('sin(')),
+      Button(label: 'x²', onPressed: () => addToUserQuestion('^2')),
     ];
 
   }
@@ -88,8 +90,8 @@ class _HomePageState extends State<HomePage> {
       if (eval.isInfinite) {
         userAnswer = 'Cannot divide by zero';
       }
-      else if (eval.toString().length > 16){
-        userAnswer = eval.toString().substring(0,16);
+      else if (eval.toString().length > 7){
+        userAnswer = eval.toString().substring(0,7);
         lastAnswer = userAnswer;
       }
       else {
@@ -112,7 +114,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void ans() {
-    if (userQuestion.length + lastAnswer.length < 16) {
+    if (userQuestion.length + lastAnswer.length < 7) {
       if (lastButtonPressed == '=') {
         clear();
       }
@@ -127,13 +129,29 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addToUserQuestion(String input){
-    if (userQuestion.length < 16) {
+    if (userQuestion.length < 7) {
       if (lastButtonPressed == '='){
         clear();
       }
       userQuestion += input;
       lastButtonPressed = input;
     }
+  }
+
+  void tanButton(String unit){
+    //only calculates radians at the moment
+    double numberInput= double.parse(userQuestion);
+    double result = tan(numberInput);
+
+    setState(() {
+      if (result.toString().length > 7){
+        userAnswer = result.toString().substring(0,7);
+      }
+      else {
+        userAnswer = result.toString();
+      }
+
+    });
   }
 
   TextStyle displayStyle = TextStyle(
@@ -177,27 +195,32 @@ class _HomePageState extends State<HomePage> {
         ),
 
         // buttons
-        Expanded(
-          flex: 2,
-          child: Container(
-              height: 200,
-              child: GridView.builder(
-                  itemCount: buttons.length,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4),
-                  itemBuilder: (context, index) {
-                    return MyButton(
-                      child: buttons[index].label,
-                      buttonColor: Colors.deepPurple[100],
-                      textColor: Colors.black,
-                      function: () {
-                        setState(() {
-                          buttons[index].onPressed();
-                        });
-                      },
-                    );
-                  })),
+        Flexible(
+          child: GridView.builder(
+            itemCount: buttons.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 11, // Number of buttons per row
+              mainAxisSpacing: 8, // Spacing between rows
+              crossAxisSpacing: 8, // Spacing between columns
+              childAspectRatio: 1, // Maintain a square aspect ratio for buttons
+            ),
+            itemBuilder: (context, index) {
+              return SizedBox(
+                width: 70,  // Fixed width for each button
+                height: 70, // Fixed height for each button
+                child: MyButton(
+                  child: buttons[index].label,
+                  buttonColor: Colors.deepPurple[100],
+                  textColor: Colors.black,
+                  function: () {
+                    setState(() {
+                      buttons[index].onPressed();
+                    });
+                  },
+                ),
+              );
+            },
+          ),
         ),
       ]),
     );
