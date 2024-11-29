@@ -2,6 +2,7 @@ import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:math_expressions/math_expressions.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'DEL', onPressed: () => setState(() {delete();})),
       Button(label:'%', onPressed: () => addToUserQuestion('%')),
       Button(label:'/', onPressed: () => addToUserQuestion('/')),
+      Button(label: 'cosh', onPressed: () => setState(() { calculateCosh(); })), //cosh
       Button(label:'7', onPressed: () => addToUserQuestion('7')),
       Button(label:'8', onPressed: () => addToUserQuestion('8')),
       Button(label:'9', onPressed: () => addToUserQuestion('9')),
@@ -159,6 +161,24 @@ class _HomePageState extends State<HomePage> {
     fontWeight: FontWeight.bold,
     fontSize: 48,
   );
+
+  //Cosh
+  void calculateCosh() {
+    try {
+      double value = double.parse(userQuestion);
+      double result = (exp(value) + exp(-value)) / 2.0; // Formula to calculate hyperbolic cosine
+      setState(() {
+        userAnswer = result.toString();
+        lastAnswer = userAnswer;
+        lastButtonPressed = 'cosh';
+      });
+    } catch (e) {
+      // Handle any calculation errors
+      setState(() {
+        userAnswer = 'Error';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
