@@ -2,7 +2,6 @@ import 'package:calculator/button.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:math_expressions/math_expressions.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -68,6 +67,8 @@ class _HomePageState extends State<HomePage> {
       Button(label: 'sin', onPressed: () => addToUserQuestion('sin(')),
       Button(label: 'x²', onPressed: () => addToUserQuestion('^2')),
       Button(label: 'x³', onPressed: () => setState(() { cube(); })),
+      Button(label:'log', onPressed: () => addToUserQuestion('log')),
+      Button(label: 'sinh', onPressed: () => sinhButton()),
     ];
 
   }
@@ -174,6 +175,26 @@ class _HomePageState extends State<HomePage> {
       }
 
     });
+  }
+
+  double sinh(double x) {
+    return (exp(x) - exp(-x)) / 2;
+  }
+
+  void sinhButton() {
+    try {
+      double numberInput = double.parse(userQuestion);
+
+      double result = sinh(numberInput);
+
+      setState(() {
+        userAnswer = result.toStringAsFixed(10); // Display up to 10 decimals
+      });
+    } catch (e) {
+      setState(() {
+        userAnswer = "Error"; // Error for invalid input
+      });
+    }
   }
 
   TextStyle displayStyle = TextStyle(
