@@ -75,6 +75,7 @@ class _HomePageState extends State<HomePage> {
 
   void calculateExpression() {
     String expressionStr = userQuestion;
+
     expressionStr = expressionStr.replaceAllMapped(RegExp(r'sin\(([^)]+)\)'), (match) {
       double degrees = double.tryParse(match.group(1) ?? '0') ?? 0;
       return sin(degrees * (pi / 180)).toString();
@@ -85,24 +86,33 @@ class _HomePageState extends State<HomePage> {
       return pow(base, 2).toString();
     });
 
-    Parser p = Parser();
-    Expression expression = p.parse(userQuestion);
-    ContextModel cm = ContextModel();
-    double eval = expression.evaluate(EvaluationType.REAL, cm);
-
-    setState(() {
-      if (eval.isInfinite) {
-        userAnswer = 'Cannot divide by zero';
-      }
-      else if (eval.toString().length > 7){
-        userAnswer = eval.toString().substring(0,7);
-        lastAnswer = userAnswer;
-      }
-      else {
-        userAnswer = eval.toString();
-        lastAnswer = userAnswer;
-      }
+    expressionStr = expressionStr.replaceAllMapped(RegExp(r'log\(([^)]+)\)'), (match) {
+      double value = double.tryParse(match.group(1) ?? '0') ?? 0;
+      return log(value).toString();
     });
+
+    Parser p = Parser();
+    try {
+      Expression expression = p.parse(expressionStr);
+      ContextModel cm = ContextModel();
+      double eval = expression.evaluate(EvaluationType.REAL, cm);
+
+      setState(() {
+        if (eval.isInfinite) {
+          userAnswer = 'Cannot divide by zero';
+        } else if (eval.toString().length > 7) {
+          userAnswer = eval.toString().substring(0, 7);
+          lastAnswer = userAnswer;
+        } else {
+          userAnswer = eval.toString();
+          lastAnswer = userAnswer;
+        }
+      });
+    } catch (e) {
+      setState(() {
+        userAnswer = "Error";
+      });
+    }
   }
 
   void cube() {
