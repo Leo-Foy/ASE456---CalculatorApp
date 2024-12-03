@@ -99,18 +99,16 @@ class _HomePageState extends State<HomePage> {
       double eval = expression.evaluate(EvaluationType.REAL, cm);
 
       setState(() {
-        if (eval == null){
-        userAnswer = 'Invalid Expression';
-      } else if (eval.isInfinite) {
-          userAnswer = 'Undefined';
-        } else if (eval.isNaN) {
-        userAnswer = 'Not a Number'; } else if (eval.toString().length > 7) {
-          userAnswer = eval.toString().substring(0, 7);
-          lastAnswer = userAnswer;
-        } else {
-          userAnswer = eval.toString();
-          lastAnswer = userAnswer;
-        }
+        if (eval.isInfinite) {
+        userAnswer = 'Undefined';
+      } else if (eval.isNaN) {
+      userAnswer = 'Not a Number'; } else if (eval.toString().length > 7) {
+        userAnswer = eval.toString().substring(0, 7);
+        lastAnswer = userAnswer;
+      } else {
+        userAnswer = eval.toString();
+        lastAnswer = userAnswer;
+      }
       });
     } catch (e) {
       setState(() {
