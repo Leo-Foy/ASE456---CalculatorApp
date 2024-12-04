@@ -65,9 +65,11 @@ class _HomePageState extends State<HomePage> {
       Button(label:'X^y', onPressed: () => addToUserQuestion('^')),
       Button(label:'Tan', onPressed: () => tanButton('Rad')),
       Button(label: 'sin', onPressed: () => addToUserQuestion('sin(')),
+      Button(label: 'csc', onPressed: () => addToUserQuestion('csc(')),
       Button(label: 'x²', onPressed: () => addToUserQuestion('^2')),
       Button(label: 'x³', onPressed: () => setState(() { cube(); })),
       Button(label:'log', onPressed: () => addToUserQuestion('log')),
+      Button(label: 'π', onPressed: () => addToUserQuestion('π')),
       Button(label: 'sinh', onPressed: () => sinhButton()),
     ];
 
@@ -76,9 +78,21 @@ class _HomePageState extends State<HomePage> {
   void calculateExpression() {
     String expressionStr = userQuestion;
 
+    // Replace all instances of pi with the actual value
+    expressionStr = expressionStr.replaceAll('π', pi.toString());
+
     expressionStr = expressionStr.replaceAllMapped(RegExp(r'sin\(([^)]+)\)'), (match) {
       double degrees = double.tryParse(match.group(1) ?? '0') ?? 0;
       return sin(degrees * (pi / 180)).toString();
+    });
+
+    expressionStr = expressionStr.replaceAllMapped(RegExp(r'csc\(([^)]+)\)'), (match) {
+      String expression = match.group(1) ?? '0';
+      Parser p = Parser();
+      Expression parsedExpression = p.parse(expression);
+      ContextModel cm = ContextModel();
+      double degrees = parsedExpression.evaluate(EvaluationType.REAL, cm);
+      return (1 / sin(degrees)).toString();
     });
 
     expressionStr = expressionStr.replaceAllMapped(RegExp(r'(\d+)\^2'), (match) {
@@ -100,8 +114,8 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         if (eval.isInfinite) {
           userAnswer = 'Cannot divide by zero';
-        } else if (eval.toString().length > 7) {
-          userAnswer = eval.toString().substring(0, 7);
+        } else if (eval.toString().length > 16) {
+          userAnswer = eval.toString().substring(0, 16);
           lastAnswer = userAnswer;
         } else {
           userAnswer = eval.toString();
@@ -162,7 +176,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addToUserQuestion(String input){
-    if (userQuestion.length < 7) {
+    if (userQuestion.length < 16) {
       if (lastButtonPressed == '='){
         clear();
       }
