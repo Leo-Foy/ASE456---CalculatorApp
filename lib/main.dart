@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
       Button(label: 'x²', onPressed: () => addToUserQuestion('^2')),
       Button(label: 'x³', onPressed: () => setState(() { cube(); })),
       Button(label:'log', onPressed: () => addToUserQuestion('log')),
+      Button(label:'ln', onPressed: () => addToUserQuestion('ln')),
       Button(label: 'π', onPressed: () => addToUserQuestion('π')),
       Button(label: 'sinh', onPressed: () => sinhButton()),
     ];
@@ -113,14 +114,16 @@ class _HomePageState extends State<HomePage> {
 
       setState(() {
         if (eval.isInfinite) {
-          userAnswer = 'Cannot divide by zero';
-        } else if (eval.toString().length > 16) {
-          userAnswer = eval.toString().substring(0, 16);
-          lastAnswer = userAnswer;
-        } else {
-          userAnswer = eval.toString();
-          lastAnswer = userAnswer;
-        }
+        userAnswer = 'Undefined';
+      } else if (eval.isNaN) {
+      userAnswer = 'Not a Number'; } else if (eval.toString().length > 7) {
+        userAnswer = eval.toString().substring(0, 7);
+        lastAnswer = userAnswer;
+      } else {
+        userAnswer = eval.toString();
+        lastAnswer = userAnswer;
+      }
+
       });
     } catch (e) {
       setState(() {
