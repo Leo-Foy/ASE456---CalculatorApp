@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -79,7 +78,6 @@ class _HomePageState extends State<HomePage> {
   void calculateExpression() {
     String expressionStr = userQuestion;
 
-    // Replace all instances of pi with the actual value
     expressionStr = expressionStr.replaceAll('π', pi.toString());
 
     expressionStr = expressionStr.replaceAllMapped(RegExp(r'sin\(([^)]+)\)'), (match) {
@@ -134,7 +132,7 @@ class _HomePageState extends State<HomePage> {
 
   void cube() {
     try {
-      // Parse the user input and calculate the cube
+
       double value = double.parse(userQuestion);
       double result = pow(value, 3).toDouble();
 
@@ -144,7 +142,7 @@ class _HomePageState extends State<HomePage> {
         lastButtonPressed = 'x³';
       });
     } catch (e) {
-      // Handle invalid input
+
       setState(() {
         userAnswer = 'Error';
       });
@@ -215,11 +213,11 @@ class _HomePageState extends State<HomePage> {
       double result = sinh(numberInput);
 
       setState(() {
-        userAnswer = result.toStringAsFixed(10); // Display up to 10 decimals
+        userAnswer = result.toStringAsFixed(10);
       });
     } catch (e) {
       setState(() {
-        userAnswer = "Error"; // Error for invalid input
+        userAnswer = "Error";
       });
     }
   }
@@ -234,14 +232,14 @@ class _HomePageState extends State<HomePage> {
   void calculateCosh() {
     try {
       double value = double.parse(userQuestion);
-      double result = (exp(value) + exp(-value)) / 2.0; // Formula to calculate hyperbolic cosine
+      double result = (exp(value) + exp(-value)) / 2.0;
       setState(() {
         userAnswer = result.toString();
         lastAnswer = userAnswer;
         lastButtonPressed = 'cosh';
       });
     } catch (e) {
-      // Handle any calculation errors
+
       setState(() {
         userAnswer = 'Error';
       });
@@ -253,7 +251,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[200],
       body: Column(children: [
-        // Q and A
         Expanded(
           child: Container(
             padding: EdgeInsets.only(left: 25, right: 25, top: 75),
