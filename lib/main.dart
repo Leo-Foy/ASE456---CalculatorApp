@@ -71,6 +71,7 @@ class _HomePageState extends State<HomePage> {
       Button(label:'ln', onPressed: () => addToUserQuestion('ln')),
       Button(label: 'π', onPressed: () => addToUserQuestion('π')),
       Button(label: 'sinh', onPressed: () => sinhButton()),
+      Button(label: 'Sqrt', onPressed: () => sqrtButton()),
     ];
 
   }
@@ -244,6 +245,22 @@ class _HomePageState extends State<HomePage> {
         userAnswer = 'Error';
       });
     }
+  }
+
+  void sqrtButton() {
+    
+    double numberInput= double.parse(userQuestion);
+    double result = sqrt(numberInput);
+
+    setState(() {
+      if (result.toString().length > 7){
+        userAnswer = result.toString().substring(0,7);
+      }
+      else {
+        userAnswer = result.toString();
+      }
+
+    });
   }
 
   @override
