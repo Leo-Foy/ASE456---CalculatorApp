@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void sqrtButton() {
-    
+
     double numberInput= double.parse(userQuestion);
     double result = sqrt(numberInput);
 
