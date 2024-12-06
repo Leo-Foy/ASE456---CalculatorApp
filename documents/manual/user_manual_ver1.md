@@ -49,11 +49,11 @@ It supports basic arithmetic operations, exponential functions, logarithmic func
 
 2. **Cube Function**:
     - Enter a number
-    - Press the x^3^ button to evaluate the cube of the number
+    - Press the x<sup>3</sup> button to evaluate the cube of the number
 
 3. **Exponential Function**:
     - Enter a base number
-    - Press the x^y^ button, enter the exponent
+    - Press the x<sup>y</sup> button, enter the exponent
     - Press `=` to evaluate the exponential function.
 
 4. **Square Root Function**:
