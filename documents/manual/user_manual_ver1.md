@@ -3,7 +3,7 @@
 ## Introduction
 Welcome to the Calculator Application! This manual will guide you through the features and usage of the application. 
 This calculator application allows you to build an equation than evaluate it to get the result. 
-It supports basic arithmetic operations, exponential functions, logarithmic functions, qand trigonometric functions.
+It supports basic arithmetic operations, exponential functions, logarithmic functions, and trigonometric functions.
 
 ## Features
 - Basic arithmetic functions
@@ -59,13 +59,12 @@ It supports basic arithmetic operations, exponential functions, logarithmic func
 4. **Square Root Function**:
     - Enter a number
     - Press the `Sqrt` button to calculate the square root of the number.
-    - Press `=` to evaluate the square root of the number.
 
 ### Logarithmic functions
-1. **Logarithm Base 10**:
+1. **Binary Logarithm**:
     - Press the `Log` button to append `Log(` to the current input.
     - Enter the number and press `)` to close the parenthesis.
-    - Press `=` to evaluate the logarithm base 10 of the number.
+    - Press `=` to evaluate the Binary logarithm of the number.
 
 2. **Natural Logarithm (ln)**:
     - Press the `ln` button to append `ln(` to the current input.

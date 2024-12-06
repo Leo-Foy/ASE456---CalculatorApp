@@ -1,6 +1,0 @@
-# Possible refactoring list
-- box or container with an outline for displayed numbers so it looks more like a screen
-- maybe make the screen clear when the next button is pressed after hitting the '=' button?
-- what does 'ans' do? eliminate this? or make it functional?
-- set maximum number of digits display on screen so there isn't error when it is really long?
-- create a way to use the cursor (or left/right arrow) to get to a different position in the number?

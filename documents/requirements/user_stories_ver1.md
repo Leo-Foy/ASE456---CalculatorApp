@@ -1,0 +1,13 @@
+# User Stories
+- As a user I want to click a button called Sin to append sine to the current equation 
+- As a user I want to click a button called Cos to append cosine to the current equation
+- As a user I want to click a button called Tan to append tangent to the current equation
+- As a user I want to click a button called Cosh to append the hyperbolic Cosine to the current equation
+- As a user I want to click a button called Sinh to append the hyperbolic Sine to the current equation
+- As a user I want to click a button called Csc to append the cosecant to the current equation
+- As a user I want to click a button called x<sup>2</sup> to append a square to the current equation
+- As a user I want to click a button called x<sup>3</sup> to cube the current equation
+- As a user I want to click a button called x<sup>y</sup> to add custom exponentiation to an equation
+- As a user I want to click a button called Sqrt to evaluate the square root of an equation
+- As a user I want to click a button called Log to append the binary log to the current equation
+- As a user I want to click a button called ln to append the natural log to the current equation
