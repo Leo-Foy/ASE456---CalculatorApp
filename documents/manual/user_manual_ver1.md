@@ -44,7 +44,7 @@ It supports basic arithmetic operations, exponential functions, logarithmic func
 
 ### Exponential Function
 1. **Square Function**:
-    - Enter the number and press the `x^2^` button to square the number.
+    - Enter the number and press the x<sup>2</sup> button to square the number.
     - Press `=` to evaluate the square of the number.
 
 2. **Cube Function**:
