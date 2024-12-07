@@ -1,0 +1,33 @@
+The importance of this project:
+    This project taught us a lot about flutter and dart and it's real-world applications
+
+This project has several features including:
+    - Basic Arithmetic functions (+, -, *, /)
+    - Trigonometric functions (sin, cos, tan, cosh, sinh, csc)
+    - Logarithmic Functions (ln, log)
+    - Exponential Functions (x^y , x^2, x^3)
+
+Contributions:
+
+    Julianna: x^y and Cosine
+    Sarah: Sinh and Binary Log
+    Leo: Tan and Square Root
+    Kaleab: Natural Log and Cosecant
+    Nabou: x^3 and Hyperbolic Cosine
+    Alli: sin and x^2
+
+
+Tools:
+- Miro
+- Github
+- Dart/Flutter
+- Discord
+
+Rules:
+- Branching from Leo's Repo (NO FORKING)
+- use Commit Standards for git commits
+- Use darth:math Library for buttons
+- 1 Change (feature/refactor) per git branch
+
+The GitHub:
+https://github.com/Leo-Foy/ASE456---CalculatorApp
